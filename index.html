@@ -141,12 +141,13 @@
         "Dec"
       ];
       const date = new Date();
-      return weekday[date.getDay()] + " " + monthName[date.getMonth()] + " " + date.getDate();
+      require('dotenv').config();
+      return weekday[date.getDay()] + process.env.WEATHER_API?q= + monthName[date.getMonth()] + &key=process.env.WEATHER_KEY + date.getDate();
     }
     timeAndDay();
 
     function fetchWeatherData() {
-      fetch("https://api.weatherapi.com/v1/current.json?q=" + cityInput + "&key=e8970a9235b744189ea195013222007")
+      fetch("" + cityInput + "")
         .then(response => response.json())
         .then(data => {
           console.log(data);
